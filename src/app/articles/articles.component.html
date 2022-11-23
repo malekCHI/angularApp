@@ -1,0 +1,19 @@
+<div class="container">
+  <input name="input"[(ngModel)]="countText">
+  <button (click)="count()">Number of articles</button>
+   <h5 class="card-title">{{ Titre }}</h5><br>
+<div class="card"*ngFor="let p of listeArticles ">
+  <div class="card-body">
+     <div *ngIf="p.categorie!='Travail'">
+    <p class="fw-bolder">Titre :{{ p.titre }}</p>
+    <p class="card-text">Auteur: {{ p.auteur }}</p>
+    <p class="card-text"> Date: {{ p.date }}</p>
+    <p class="card-text">Contenu: {{ p.contenu }}</p>
+     <p class="card-text" [ngStyle]="{'background-color':'green'}">Categorie :{{ p.categorie}}</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+

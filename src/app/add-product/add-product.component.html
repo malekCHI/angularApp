@@ -1,0 +1,39 @@
+
+<div class="container">
+  <h5>Add Product</h5>
+  <!-- hna hatina type submit khtre type submit taa button -->
+<form #f="ngForm"(ngSubmit)="Ajouter()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Titre</label>
+    <input type="text" class="form-control" name="title" #title= 'ngModel' [(ngModel)]='product.title' required  minlength="3">{{ product.title}}
+<div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+    <div *ngIf="title.errors?.['required']">title is required</div>
+    <div *ngIf="title.errors?.['minlength']">title must have at least 3 caracters</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Price</label>
+    <input type="number" class="form-control" name="price" #price= 'ngModel'[(ngModel)]='product.price'required  min="1">{{ product.price}}
+    <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+    <div *ngIf="price.errors?.['required']">price is required</div>
+    <div *ngIf="price.errors?.['min']">price must have at least one number</div>
+  </div></div>
+  <div class="mb-3">
+     <label  for="exampleInputPassword1" class="form-label">Quantité</label>
+    <input type="number" class="form-control" name="quantity"#quantity= 'ngModel'[(ngModel)]='product.quantity'required min="1">{{ product.quantity}}
+    <div class="alert alert-danger" *ngIf="quantity.touched && quantity.invalid">
+    <div *ngIf="quantity.errors?.['required']">Quantity is required</div>
+    <div *ngIf="quantity.errors?.['min']">Quantity must have at least one number</div>
+  </div>
+  </div>
+   <div class="mb-3">
+     <label  for="exampleInputPassword1" class="form-label">Picture</label>
+    <input type="text" class="form-control" name="picture" #picture= 'ngModel'[(ngModel)]='product.picture'required>{{ product.picture }}
+    <div class="alert alert-danger" *ngIf="picture.touched && picture.invalid">
+
+
+    <div *ngIf="picture.errors?.['required']">picture is required</div>
+  </div></div>
+  <button type="submit" value="Save" class="btn btn-primary"[disabled]="f.invalid">Add product</button>
+</form>
+</div>

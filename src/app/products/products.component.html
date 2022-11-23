@@ -1,0 +1,36 @@
+<div class="container">
+
+   <a routerLink="add_products"><button class="btn btn-success pull-right" > Add product</button></a>
+
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let p of products">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ p.picture }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ p.title }}</h5>
+          <hr />
+          <p class="card-title">Prix :{{ p.price }} DT</p>
+          <p class="card-text">Quantité :{{ p.quantity }}</p>
+          <p class="card-text">Nbre de like :{{ p.like }}</p>
+          <hr />
+          <p class="card-text">
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content.
+          </p>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="Buy(p.id)"
+            [disabled]="p.quantity == 0"
+          >
+            Buy
+          </button>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          <button type="button" class="btn btn-outline-primary">Like</button>
+          &nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
