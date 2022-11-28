@@ -1,0 +1,68 @@
+<div class="container">
+    <h5>Add Driven</h5>
+<form #f="ngForm" (ngSubmit)="Ajouter(f)">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nom</label>
+        <input type="text" class="form-control" name="nom" #n='ngModel' [(ngModel)]='driven.nom' required
+            minlength="3">
+        <div class="alert alert-danger" *ngIf="n.touched && n.invalid">
+            <div *ngIf="n.errors?.['required']">Name is required</div>
+            <div *ngIf="n.errors?.['minlength']">Name must have at least 3 caracters</div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="text" class="form-control" name="email" #e='ngModel' required [(ngModel)]='driven.email'
+            pattern="[a-zA-Z0-9]+.[a-zA-Z0-9]+@[a-zA-Z]{3}">
+        <div class="alert alert-danger" *ngIf="e.touched && e.invalid">
+            <div *ngIf="e.errors?.['required']">email is required</div>
+            <div *ngIf="e.errors?.['pattern']">the email doesn't seem right</div>
+        </div>
+    </div>
+<div >
+  <!--   <form #aa="ngForm"> -->
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Type de carte </label>
+        <!--directive ng model permet de controller l'input de chaque entré de form -->
+        <input type="number" class="form-control" name="type_carte" #t='ngModel' [(ngModel)]='driven.type_carte' required
+            min="1">
+        <div class="alert alert-danger" *ngIf="t.touched && t.invalid">
+            <div *ngIf="t.errors?.['required']">Type de carte is required</div>
+            <div *ngIf="t.errors?.['min']">Type de carte must have at least one number</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Numero carte </label>
+        <input type="text" class="form-control" name="num_carte" #nu='ngModel' [(ngModel)]='driven.num_carte'
+            required  minlength="16" maxlength="16">
+        <div class="alert alert-danger" *ngIf="nu.touched && nu.invalid">
+            <div *ngIf="nu.errors?.['required']">Num de carte is required</div>
+            <div *ngIf="nu.errors?.['minlength']">Num de carte must have 16 number</div>
+            <div *ngIf="nu.errors?.['maxlength']">Num de carte must have 16 number </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Date experation</label>
+        <input type="date" class="form-control" name="date_experation" #date='ngModel' [(ngModel)]='driven.date_experation'
+            required>
+         <div class="alert alert-danger" *ngIf="date.touched && date.invalid">
+            <div *ngIf="date.errors?.['required']">Date is required</div>
+        </div> 
+    </div>
+    <div class="mb-3" >
+            <label for="exampleInputPassword1" class="form-label">Code </label>
+            <!--directive ng model permet de controller l'input de chaque entré de form -->
+            <input type="number" class="form-control" name="code" #c='ngModel' [(ngModel)]='driven.code' required min="1"  [hidden]="date.invalid || nu.invalid || t.invalid">
+      
+        <div class="alert alert-danger" *ngIf="c.touched && c.invalid">
+            <div  *ngIf="c.errors?.['required']">Type de carte is required</div>
+            <div *ngIf="c.errors?.['min']">Type de carte must have at least one number</div>
+        </div>
+    </div>
+   <!--  </form> -->
+
+</div>
+     <button type="submit" value="Save" class="btn btn-primary" [disabled]="f.invalid">Ajouter</button> 
+</form>
+</div>

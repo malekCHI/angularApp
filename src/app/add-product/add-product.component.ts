@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Product } from '../core/Product';
 
 @Component({
@@ -7,6 +8,7 @@ import { Product } from '../core/Product';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+  email!:string
   product!: Product;
 
   constructor() { }
@@ -15,8 +17,8 @@ export class AddProductComponent implements OnInit {
     this.product=new Product();
   }
 
-  Ajouter() {
-    console.log(this.product)
+  Ajouter(f:NgForm) {
+    console.log(this.product);
   }
 
 }

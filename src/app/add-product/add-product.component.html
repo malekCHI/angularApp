@@ -2,7 +2,7 @@
 <div class="container">
   <h5>Add Product</h5>
   <!-- hna hatina type submit khtre type submit taa button -->
-<form #f="ngForm"(ngSubmit)="Ajouter()">
+<form #f="ngForm"(ngSubmit)="Ajouter(f)">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Titre</label>
     <input type="text" class="form-control" name="title" #title= 'ngModel' [(ngModel)]='product.title' required  minlength="3">{{ product.title}}
@@ -11,28 +11,38 @@
     <div *ngIf="title.errors?.['minlength']">title must have at least 3 caracters</div>
   </div>
   </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">email</label>
+    <input type="text" class="form-control" name="email" #e='ngModel'required [(ngModel)]='email' pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}" >
+    <div class="alert alert-danger" *ngIf="e.touched && e.invalid">
+      <div *ngIf="e.errors?.['required']">email is required</div>
+      <div *ngIf="e.errors?.['pattern']">the email doesn't seem right</div>
+    </div>
+  </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Price</label>
-    <input type="number" class="form-control" name="price" #price= 'ngModel'[(ngModel)]='product.price'required  min="1">{{ product.price}}
-    <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-    <div *ngIf="price.errors?.['required']">price is required</div>
-    <div *ngIf="price.errors?.['min']">price must have at least one number</div>
+    <!--directive ng model permet de controller l'input de chaque entré de form -->
+    <input type="number" class="form-control" name="price" #pricee= 'ngModel'[(ngModel)]='product.price'required  min="1">{{ product.price}}
+    <div class="alert alert-danger" *ngIf="pricee.touched && pricee.invalid">
+    <div *ngIf="pricee.errors?.['required']">price is required</div>
+    <div *ngIf="pricee.errors?.['min']">price must have at least one number</div>
   </div></div>
   <div class="mb-3">
      <label  for="exampleInputPassword1" class="form-label">Quantité</label>
-    <input type="number" class="form-control" name="quantity"#quantity= 'ngModel'[(ngModel)]='product.quantity'required min="1">{{ product.quantity}}
-    <div class="alert alert-danger" *ngIf="quantity.touched && quantity.invalid">
-    <div *ngIf="quantity.errors?.['required']">Quantity is required</div>
-    <div *ngIf="quantity.errors?.['min']">Quantity must have at least one number</div>
+    <input type="number" class="form-control" name="quantity"#quantityy= 'ngModel'[(ngModel)]='product.quantity'required min="1">{{ product.quantity}}
+    <div class="alert alert-danger" *ngIf="quantityy.touched && quantityy.invalid">
+    <div *ngIf="quantityy.errors?.['required']">Quantity is required</div>
+    <div *ngIf="quantityy.errors?.['min']">Quantity must have at least one number</div>
   </div>
   </div>
    <div class="mb-3">
      <label  for="exampleInputPassword1" class="form-label">Picture</label>
-    <input type="text" class="form-control" name="picture" #picture= 'ngModel'[(ngModel)]='product.picture'required>{{ product.picture }}
-    <div class="alert alert-danger" *ngIf="picture.touched && picture.invalid">
+    <input type="text" class="form-control" name="picture" #picturee= 'ngModel'[(ngModel)]='product.picture'required>{{ product.picture }}
+    <div class="alert alert-danger" *ngIf="picturee.touched && picturee.invalid">
 
 
-    <div *ngIf="picture.errors?.['required']">picture is required</div>
+    <div *ngIf="picturee.errors?.['required']">picture is required</div>
   </div></div>
   <button type="submit" value="Save" class="btn btn-primary"[disabled]="f.invalid">Add product</button>
 </form>
