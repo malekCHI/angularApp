@@ -1,0 +1,18 @@
+<div class="container">
+<div class="list-group"  *ngFor="let p of todolist">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{p.userId}}</h5>
+            <small>{{p.id}}</small>
+        </div>
+        <p class="mb-1">{{p.title}}</p>
+        <small>{{p.completed}}</small>
+    </a>
+</div>
+<div class="d-grid gap-2 d-md-block">
+    <button (click)="Bilan()" class="btn btn-success btn-sm">
+        Bilan
+        <span class="badge badge-light">: {{ x }}</span>
+    </button>
+</div>
+</div>

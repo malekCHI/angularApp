@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'Articles', component: ArticlesComponent },
   { path: 'products/add_products', component: AddProductComponent },
   { path: 'Driven', component: TemplateDrivenFormComponent },
+  { path: 'todolist', component:  TodoListComponent},
   { path:'**',component:NotFoundComponent},
 
 ];
